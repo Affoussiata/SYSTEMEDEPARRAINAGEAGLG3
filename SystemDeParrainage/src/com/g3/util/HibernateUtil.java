@@ -1,4 +1,4 @@
-package com.Session;
+package com.g3.util;
 
 import java.util.Properties;
 
@@ -8,7 +8,11 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
-import com.sati.model.Student;
+import Base_donnee.Cycle;
+import Base_donnee.Etudiant;
+import Base_donnee.Filiere;
+import Base_donnee.Niveau;
+import Base_donnee.Parcourt;
 
 
 public class HibernateUtil {
@@ -21,7 +25,7 @@ public class HibernateUtil {
                 // Hibernate settings equivalent to hibernate.cfg.xml's properties
                 Properties settings = new Properties();
                 settings.put(Environment.DRIVER, "com.mysql.jdbc.Driver");
-                settings.put(Environment.URL, "jdbc:mysql://localhost:3308/bd?useSSL=false");
+                settings.put(Environment.URL, "jdbc:mysql://localhost:3308/systemdeparrainage?useSSL=false");
                 settings.put(Environment.USER, "root");
                 settings.put(Environment.PASS, "");
                 settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
@@ -34,12 +38,12 @@ public class HibernateUtil {
 
                 configuration.setProperties(settings);
 
-                configuration.addAnnotatedClass(.class);
-                configuration.addAnnotatedClass(.class);
-                configuration.addAnnotatedClass(.class);
-                configuration.addAnnotatedClass(.class);
-                configuration.addAnnotatedClass(.class)
-                configuration.addAnnotatedClass(.class);
+                configuration.addAnnotatedClass(Cycle.class);
+                configuration.addAnnotatedClass(Etudiant.class);
+                configuration.addAnnotatedClass(Filiere.class);
+                configuration.addAnnotatedClass(Niveau.class);
+                configuration.addAnnotatedClass(Parcourt.class);
+                configuration.addAnnotatedClass(Parcourt.class);
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                     .applySettings(configuration.getProperties()).build();
